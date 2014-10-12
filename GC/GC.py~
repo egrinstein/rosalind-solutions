@@ -1,0 +1,24 @@
+from Bio import SeqIO
+
+handle = open("input.fasta", "rU")
+
+record_list = SeqIO.parse(handle,"fasta")
+
+highest_gc_percentage = 0.0
+highest_gc_percentage_id = 'jgghjn'
+
+for record in SeqIO.parse(handle, "fasta"):
+    gc_percentage = record.seq.count('C') + record.seq.count('G')
+    gc_percentage = 100.0*gc_percentage/len(record.seq)
+
+    
+    if highest_gc_percentage < gc_percentage:
+
+        highest_gc_percentage = gc_percentage
+        highest_gc_percentage_id = record.id
+
+handle.close()
+
+print highest_gc_percentage_id
+print highest_gc_percentage
+

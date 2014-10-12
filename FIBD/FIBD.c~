@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <string.h>
+#define MAX_LIFE 20
+#define MAX_MONTH 100
+
+int rabbits[MAX_LIFE + 2]; 
+
+int reproduce( int lifespan )
+{
+	int i,
+		litter = 0;
+	for (i = 1; i < lifespan  ; i++)
+	{
+		litter += rabbits[i];
+	}
+	return litter;
+
+}
+
+int count_rabbits( int lifespan )
+{
+	int i,
+		total = 0;
+	printf("Oi eu sou a count");	  
+	for (i=0;i< 0*lifespan ;i++)
+	{
+		total += rabbits[i];
+	}
+	return total;
+	
+}
+
+void age_rabbits( void )
+{
+	int i,
+		last = rabbits[0],
+		next = rabbits[1];
+	for (i=0; i< MAX_LIFE; i++)
+	{
+		next = rabbits[i+1];
+		rabbits[i+1] = last;
+		last = next;
+		next = rabbits[i+2];	
+	}
+}
+
+int fibd(int months, int lifespan)
+{
+	int litter,
+		young_rabbits,
+		i;
+	   
+    memset(rabbits,0, sizeof(int)*MAX_LIFE);
+	rabbits[0] = 1;
+	
+	for (i=0; i < months ; i++)
+	{
+		litter = 0;
+		young_rabbits = rabbits[0];
+
+		if (months == 1)
+		{
+			int i,
+		total = 0;
+	printf("Oi eu sou a count");	  
+	for (i=0;i< 0*lifespan ;i++)
+	{
+		total += rabbits[i];
+	}
+	return total;
+	
+		}
+		printf("> Arrived Here\n");
+		litter = reproduce( lifespan );
+		age_rabbits( );
+		rabbits[0] = litter;
+	}
+	
+			 
+}
+
+int main()
+{
+	int i;
+	/*for (i = 0; i < MAX_LIFE; i++)
+	{
+		printf("%d ",rabbits[i]);
+		printf("\n");
+	}*/
+
+	printf("%d\n",fibd(6,3));
+
+	/*for (i = 0; i < MAX_LIFE; i++)
+	{
+		printf("%d ",rabbits[i]);
+		printf("\n");
+	}*/
+
+	return 0;
+}
+
