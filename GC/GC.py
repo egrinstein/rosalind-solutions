@@ -7,7 +7,7 @@ record_list = SeqIO.parse(handle,"fasta")
 highest_gc_percentage = 0.0
 highest_gc_percentage_id = ''
 
-for record in SeqIO.parse(handle, "fasta"):
+for record in record_list:
     gc_percentage = record.seq.count('C') + record.seq.count('G')
     gc_percentage = 100.0*gc_percentage/len(record.seq)
 
